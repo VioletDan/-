@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学IT - 后台管理系统</title>
+    <?php include "/views/public/css.html" ?>
+</head>
+<body>
+    <!-- 登录 -->
+    <div class="login">
+        <div class="login-wrap">
+            <div class="avatar">
+                <img src="/views/static/uploads/monkey.png" class="img-circle" alt="">
+            </div>
+            <form action="" class="col-xs-offset-1 col-xs-10"  id="login-form">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon">
+                        <i class="fa fa-user"></i>
+                    </span>
+                    <input type="text" id="username" name="tc_name" class="form-control" placeholder="用户名">
+                </div>
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon">
+                        <i class="fa fa-key"></i>
+                    </span>
+                    <input type="password" id="password" name="tc_pass" class="form-control" placeholder="密码">
+                </div>
+                <button type="submit"  class="btn btn-lg btn-primary btn-block">登 录</button>
+            </form>
+        </div>
+    </div>
+    
+    <?php include "/views/public/js.html" ?>
+    <script>
+        $(function(){
+            $('#login-form').submit(function(){
+                var username=$('#username').val();
+                var password=$('#password').val();
+                $.ajax({
+                    type:'post',
+                    url:'/api/login',
+                    data:{
+                        tc_name:username,
+                        tc_pass:password
+                    },
+                    success:function(data){
+                        console.log(data);
+                        //因为登录成功跳转到index.html页面上,所以为了让这个页面能够访问到这个页面的数据,可以将其放在
+                        //cookie上
+                        if(data.code==200){
+                            //$.cookie('userinfo',data.result);
+                            //在控制台输入$.cookie('userinfo')时返回结果为 "[object Object]"
+                            //cookie中只能存储字符串信息，
+                            //直接存储对象，会发生 将[object Object]作为数据存储到cookie当中
+                            //所以要将对象转换成JSON字符串
+                            $.cookie('userinfo',JSON.stringify(data.result),{path:'/'});
+                            //此时的路径是/dashboard,根据cookie的访问规则,子集目录可以访问父集,反之不可以,所以
+                            //要加一个路径
+                            //路径跳转
+                            location.href='/';
+                        }
+                    },
+                    error:function(){
+                        console.log('请求出错');
+                    }
+                });
+
+                 return false;//阻止表单自动提交   
+
+
+            })
+
+
+        })
+    
+    
+    </script>
+</body>
+</html>
