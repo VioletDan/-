@@ -1,0 +1,16 @@
+define(["jquery","form","cookie"],function($){
+    $('#login-form').submit(function(e){
+        $(this).ajaxSubmit({
+            type:'post',
+            url:'/api/login',
+            success:function(data){
+                if(data.code==200){
+                    $.cookie('userinfo',JSON.stringify(data.result),{path:'/'});
+                    location.href='/';
+                }
+            }
+        });
+        //阻止表弟那自动提交
+        e.preventDefault();
+    })
+})

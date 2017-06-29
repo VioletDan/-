@@ -1,8 +1,21 @@
-<script src="/views/assets/jquery/jquery.min.js"></script>
-<script src="/views/assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="/views/assets/nprogress/nprogress.js"></script>
-<script src="/views/assets/echarts/echarts.min.js"></script>
-<script src="/views/static/js/common.js"></script>
-<script src="/views/assets/jquery-cookie/jquery.cookie.js"></script>
-<script src="/views/assets/jquery-form/jquery.form.js"></script>
-<script src="/views/assets/artTemplate/template.js"></script>
+<script src="/views/static/libs/require.js"></script>
+<script src="/views/static/libs/config.js"></script>
+<script>
+    // 可以判断地址栏的内容
+    if(location.pathname!="/dashboard/login"){
+        require(["static/js/common"]);
+    }  
+</script>
+
+<!--
+但是login页面没有侧边栏,所以会报错
+/views/assets/artTemplate/template.js:154 Template Error
+<filename>
+prfile-tpl
+
+<name>
+Render Error
+
+<message>
+Template not found
+-->
