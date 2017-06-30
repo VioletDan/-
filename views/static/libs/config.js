@@ -1,3 +1,4 @@
+//配置路径
 require.config({
     baseUrl:"/views",
     paths:{

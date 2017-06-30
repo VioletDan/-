@@ -4,5 +4,17 @@ define(["jquery","template","cookie"],function($,template){
 		var userinfo = JSON.parse($.cookie('userinfo'));
 		var tplStr = template('prfile-tpl',userinfo);
 		$('#userinfo').html(tplStr);
+		//退出功能
+		$('#logout').click(function(){
+			$.ajax({
+				url:'api/logout',
+				type:"post",
+				success:function(data){
+					if(data.code==200){
+						location.href='/dashboard/login';
+					}
+				}
+			});
+		})
 	})
 })
