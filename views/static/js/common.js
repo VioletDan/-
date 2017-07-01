@@ -26,5 +26,29 @@ define(["jquery","template","cookie"],function($,template){
 				}
 			});
 		})
+		//侧边栏功能
+		//给导航栏所有的li加上点击事件，在点击的时候，让当前背景色变暗
+		$(".navs>ul>li").click(function(){
+			$(this).children("a").addClass('active');
+			$(this).siblings().children("a").removeClass('active');
+		});	
+		//让当前页面对应的导航栏菜单变暗
+		//遍历所有的a比较href和地址栏的地址是否相等
+		//each的时候,参数要写正确,第一个是索引,第二个是value
+		$(".navs a").each(function(i,value){
+			if($(value).attr("href")==location.pathname){
+				$(value).addClass('active');
+				//如果二级菜单有active类,那么就不应该被收起来
+				$(value).parent().parent().slideDown();
+			}
+		});
+		// //课程管理的二级菜单显示
+		$(".navs>ul>li").click(function(){
+			$(this).children('ul').slideToggle();	
+			//课程管理的子菜单点击的时候,父菜单的背景色去掉
+			if($(this).find('ul').find('a').hasClass('active')){
+				$(this).removeClass('active');
+			}
+		});
 	})
 })
