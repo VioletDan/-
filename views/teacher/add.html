@@ -16,7 +16,7 @@
             <?php include "/views/public/header.html" ?>
             <div class="body teacher">
                 <!-- 面包屑 -->
-                <ol class="breadcrumb">
+                <!--<ol class="breadcrumb">
                     <li><a href="javascript:;">讲师管理</a></li>
                     <li class="active">讲师添加</li>
                 </ol>
@@ -66,11 +66,71 @@
                             </div>                          
                         </div>
                     </form>
-                </div>
+                </div>-->
             </div>
         </div>
     </div>
 
     <?php include "/views/public/js.html" ?>
+    <script type="text/template" id="teachmanage-tpl">
+        <ol class="breadcrumb">
+            <li><a href="javascript:;">讲师管理</a></li>
+            <li class="active">{{title}}</li>
+        </ol>
+        <div class="teacher-add">
+            <form action="" class="form-horizontal col-xs-offset-2" id='form'>
+                <div class="form-group">
+                    <label for="" class="col-xs-3 control-label">讲师名称</label>
+                    <div class="col-xs-4">
+                        <input type="text" value='{{tc_name}}' name='tc_name' class="form-control input-sm" placeholder="讲师名称">
+                    </div>
+                </div>
+                <!--如果tc_id不存在则显示密码-->
+                {{if !tc_id}}
+                <div class="form-group">
+                    <label for="" class="col-xs-3 control-label">密码</label>
+                    <div class="col-xs-4">
+                        <input type="password" name='tc_pass' class="form-control input-sm">
+                    </div>
+                </div>
+                {{/if}}
+                <div class="form-group">
+                    <label for="" class="col-xs-3 control-label">入职时间</label>
+                    <div class="col-xs-4">
+                        <input type="text" name='tc_join_date' value='{{tc_join_date}}' class="form-control input-sm">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-xs-3 control-label">类型</label>
+                    <div class="col-xs-3">
+                        <select name="tc_type" class="form-control input-sm">
+                            <option value="1" {{if tc_type==1}} selected{{/if}}>讲师</option>
+                            <option value="0" {{if tc_type==0}} selected{{/if}}>管理员</option> 
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-xs-3 control-label">性别</label>
+                    <div class="col-xs-4">
+                        
+                        <label class="radio-inline">
+                            <input type="radio" value='0' {{if tc_gender==0}}checked{{/if}} name='tc_gender'> 男
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio"  value='1' {{if tc_gender==1}}checked{{/if}} name='tc_gender'> 女
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-7">
+                        <button class="btn btn-success btn-sm pull-right" id='btnSave' data-type="{{type}}"> {{btnText}} </button>
+                    </div>                          
+                </div>
+            </form>
+        </div> 
+    </script>
+    <script>
+        require(['static/js/teacher/add']);
+    </script>
 </body>
 </html>
