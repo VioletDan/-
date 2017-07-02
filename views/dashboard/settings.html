@@ -54,26 +54,21 @@
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">出生日期</label>
                             <div class="col-xs-5">
-                                <input type="text" class="form-control input-sm">
+                                <input type="text" class="form-control input-sm" name="tc_birthday">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">籍贯</label>
-                            <div class="col-xs-5">
-                                <select name="" class="form-control input-sm">
-                                    <option value="">河北省</option>
-                                    <option value="">山东省</option>
-                                    <option value="">北京市</option>
+                            <div class="col-xs-5" id="region">
+                                <select name="" id="p" class="form-control input-sm">
+                                    <option value="">请选择</option>
                                 </select>
-                                <select name="" class="form-control input-sm">
-                                    <option value="">河北省</option>
-                                    <option value="">山东省</option>
-                                    <option value="">北京市</option>
+                                <select name="" id="c" class="form-control input-sm">
+                                    <option value="">请选择</option>
+
                                 </select>
-                                <select name="" class="form-control input-sm">
-                                    <option value="">河北省</option>
-                                    <option value="">山东省</option>
-                                    <option value="">北京市</option>
+                                <select name="" id="d" class="form-control input-sm">
+                                    <option value="">请选择</option>  
                                 </select>
                             </div>
                         </div>
@@ -92,13 +87,13 @@
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">入职日期</label>
                             <div class="col-xs-5">
-                                <input type="text" class="form-control input-sm">
+                                <input type="text" class="form-control input-sm" name="tc_join_date">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">个人介绍</label>
                             <div class="col-xs-5 ckeditor">
-                                <textarea name="" rows="15" class="form-control input-sm"></textarea>
+                                <textarea name="" id="introduce" rows="15" class="form-control input-sm"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -114,5 +109,8 @@
     </div>
 
     <?php include "/views/public/js.html" ?>
+    <script>
+        require(['static/js/dashboard/settings']);
+    </script>
 </body>
 </html>
