@@ -7,11 +7,26 @@ require.config({
         "cookie":"assets/jquery-cookie/jquery.cookie",
         "template":"assets/artTemplate/template",
         "bootstrap":"assets/bootstrap/js/bootstrap.min",
-        "util":"static/js/util"
+        "util":"static/js/util",
+        "nprogress": "assets/nprogress/nprogress",
+        "datepicker": "assets/bootstrap-datepicker/js/bootstrap-datepicker.min",
+        "datepicker-zh": "assets/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min",
+        "validate": "assets/validate/jquery-validate.min",
+        "ckeditor": "assets/ckeditor/ckeditor",
+        "region": "assets/jquery-region/jquery.region"
     },
     shim:{
         "bootstrap":{
             deps:['jquery']
+        },
+        "datepicker-zh": {
+            deps: ["datepicker"]//因为datepicker也依赖jquery
+        },
+        "validate": {
+            deps: ["jquery"]
+        },
+        "ckeditor": {
+            exports: "CKEDITOR"
         }
     }
 

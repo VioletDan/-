@@ -1,5 +1,17 @@
 //公共头像,有返回值的尽可能的写在前面,cookie没有返回值,所以写在最后
-define(["jquery","template","cookie"],function($,template){
+define(["jquery","template","nprogress","cookie"],function($,template,nprogress){
+	//进度条
+	nprogress.start();
+	nprogress.done();
+
+	$(document).ajaxStart(function(){
+		nprogress.start();
+	})
+
+	$(document).ajaxStop(function(){
+		nprogress.done();
+	})
+
 	$(function(){
 		//用户未登录,不能访问其他页面,都跳到登录页
 		//如果用户不在登录页的话

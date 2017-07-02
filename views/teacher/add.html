@@ -82,23 +82,29 @@
                 <div class="form-group">
                     <label for="" class="col-xs-3 control-label">讲师名称</label>
                     <div class="col-xs-4">
-                        <input type="text" value='{{tc_name}}' name='tc_name' class="form-control input-sm" placeholder="讲师名称">
+                        <input type="text" value='{{tc_name}}' name='tc_name' class="form-control input-sm" placeholder="讲师名称" 
+                        data-required data-describedby='msgfortcname' data-description='tcname'>
                     </div>
+                    <label id="msgfortcname" class="control-label hide">错误提示消息</label>
                 </div>
                 <!--如果tc_id不存在则显示密码-->
                 {{if !tc_id}}
                 <div class="form-group">
                     <label for="" class="col-xs-3 control-label">密码</label>
                     <div class="col-xs-4">
-                        <input type="password" name='tc_pass' class="form-control input-sm">
+                        <input type="password" name='tc_pass' class="form-control input-sm" 
+                        data-required data-describedby='msgfortcpass' data-description='tcpass'>
                     </div>
+                    <label id="msgfortcpass" class="control-label hide">错误提示消息</label>
                 </div>
                 {{/if}}
                 <div class="form-group">
                     <label for="" class="col-xs-3 control-label">入职时间</label>
                     <div class="col-xs-4">
-                        <input type="text" name='tc_join_date' value='{{tc_join_date}}' class="form-control input-sm">
+                        <input type="text" name='tc_join_date' value='{{tc_join_date}}' class="form-control input-sm"
+                        data-required data-describedby='msgfortcjoindate' data-description='tcjoindate'>
                     </div>
+                    <label id="msgfortcjoindate" class="control-label hide">错误提示消息</label>
                 </div>
                 <div class="form-group">
                     <label for="" class="col-xs-3 control-label">类型</label>
