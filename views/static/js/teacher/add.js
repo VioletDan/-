@@ -45,7 +45,7 @@ define(["jquery","template","util","form","validate","datepicker","datepicker-zh
                         this.parent().parent().addClass("has-success").removeClass("has-error");
                     },
                     valid:function(){
-                        alert(1);
+                        //alert(1);
                         //表单提交
                         $('#form').ajaxSubmit({
                             type:'post',
