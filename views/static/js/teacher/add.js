@@ -25,7 +25,6 @@ define(["jquery","template","util","form","validate","datepicker","datepicker-zh
                     sendForm:false,
                     onBlur: true,
                     onKeyup: true,
-                    sendForm:false,
                     description:{
                         "tcname": {
                             required: "请输入用户名",
@@ -38,11 +37,11 @@ define(["jquery","template","util","form","validate","datepicker","datepicker-zh
                         },
                     },
                     eachInvalidField:function(){
-                        this.parent().parent().addClass("has-error").removeClass("has-success");
+                        this.parent().parent().removeClass("has-success").addClass("has-error");
                         this.parent().next().removeClass("hide").show();
                     },
                     eachvalidField:function(){
-                        this.parent().parent().addClass("has-success").removeClass("has-error");
+                        this.parent().parent().removeClass("has-error").addClass("has-success");
                     },
                     valid:function(){
                         //alert(1);
@@ -96,11 +95,12 @@ define(["jquery","template","util","form","validate","datepicker","datepicker-zh
 				},
             },
             eachInvalidField:function(){
-                this.parent().parent().addClass("has-error").removeClass("has-success");
+                this.parent().parent().removeClass("has-success").addClass("has-error");
 				this.parent().next().removeClass("hide").show();
             },
             eachvalidField:function(){
-                this.parent().parent().addClass("has-success").removeClass("has-error");
+                this.parent().parent().removeClass("has-error").addClass("has-success");
+                this.parent().next().addClass("hide");
             },
             valid:function(){
                 //表单提交
