@@ -20,6 +20,48 @@ define(["jquery","template","util","form","validate","datepicker","datepicker-zh
 					format: "yyyy-mm-dd",
 					language: "zh-CN"
 				});
+                //表单验证
+                $('#form').validate({
+                    sendForm:false,
+                    onBlur: true,
+                    onKeyup: true,
+                    sendForm:false,
+                    description:{
+                        "tcname": {
+                            required: "请输入用户名",
+                        },
+                        "tcpass": {
+                            required: "请输入密码",
+                        },
+                        "tcjoindate": {
+                            required: "请输入入职时间",
+                        },
+                    },
+                    eachInvalidField:function(){
+                        this.parent().parent().addClass("has-error").removeClass("has-success");
+                        this.parent().next().removeClass("hide").show();
+                    },
+                    eachvalidField:function(){
+                        this.parent().parent().addClass("has-success").removeClass("has-error");
+                    },
+                    valid:function(){
+                        alert(1);
+                        //表单提交
+                        $('#form').ajaxSubmit({
+                            type:'post',
+                            url:'/api/teacher/update',
+                            data:{
+                                tc_id:query.tcid
+                            },
+                            success:function(data){
+                                if(data.code==200){
+                                    location.href='/teacher/list';
+                                    //不要忘记加value
+                                }
+                            }
+                        })
+                    }
+                })
             },
             error:function(){
                 console.log('请求出错');
@@ -61,20 +103,10 @@ define(["jquery","template","util","form","validate","datepicker","datepicker-zh
                 this.parent().parent().addClass("has-success").removeClass("has-error");
             },
             valid:function(){
-                var type=$(this).data('type');
-                var url='';
-                if(type=='editor'){
-                    url='/api/teacher/update';
-                }else{
-                    url='/api/teacher/add';
-                }
                 //表单提交
                 $('#form').ajaxSubmit({
                     type:'post',
-                    url:url,
-                    data:{
-                        tc_id:query.tcid
-                    },
+                    url:'/api/teacher/add',
                     success:function(data){
                         if(data.code==200){
                             location.href='/teacher/list';
@@ -85,8 +117,6 @@ define(["jquery","template","util","form","validate","datepicker","datepicker-zh
             }
 
         })
-
-
    }
 
    //处理按钮事件
