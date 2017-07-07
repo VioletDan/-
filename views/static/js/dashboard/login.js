@@ -1,4 +1,8 @@
 define(["jquery","form","cookie"],function($){
+    var userinfo=$.cookie("userinfo");
+    userinfo=userinfo && JSON.parse(userinfo);
+    //console.log(userinfo);
+    $(".avatar>img").attr("src",userinfo?userinfo.tc_avatar:"/views/static/uploads/monkey.png");
     $('#login-form').submit(function(e){
         $(this).ajaxSubmit({
             type:'post',
