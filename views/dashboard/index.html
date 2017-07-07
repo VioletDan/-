@@ -56,6 +56,8 @@
     </div>
     <?php include "/views/public/js.html" ?>
     <!--因为每个页面都有侧边栏,所以可以把require提到js.html里面,每次加载js.html的时候也加载require-->
-    
+    <script>
+         require(["static/js/dashboard/index"]);
+    </script>
 </body>
 </html>
