@@ -42,6 +42,7 @@
         </div>
         <div class="modal-body">
             <form action="" class="form-horizontal">
+                <input type="hidden" value={{ct_id}} name="ct_id">
                 <div class="form-group">
                     <label for="" class="col-xs-2 control-label">标题</label>
                     <div class="col-xs-6">
@@ -95,7 +96,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-link btn-sm" data-dismiss="modal">取消</button>
-            <button type="button" class="btn btn-success btn-sm"> {{btnText}}</button>
+            <button type="button" class="btn btn-success btn-sm" id="btnSave" data-type={{type}}> {{btnText}}</button>
         </div>
     </script>
     <script type="text/template" id="lessons-tpl">
@@ -143,23 +144,26 @@
             </div>
             <div class="lessons">
                 <ul class="list-unstyled">
-                    {{each lessons as item index}}
-                    <li>
-                        <i class="fa fa-file-video-o"></i>
-                        <span class="order">课时：{{index+1}}</span>
-                        <span class="name">{{item.ct_name}}</span>
-                        <span class="duration">{{item.ct_video_duration}}</span>
-                        <!-- 操作 -->
-                        <div class="action pull-right">
-                            <button class="btn btn-info btn-xs" id="editor" data-id={{item.ct_id}}>编辑</button>
-                            <a href="javascript:;" class="btn btn-info btn-xs">预览</a>
-                            <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-                        </div>
-                    </li>
-                    {{/each}}
+                   {{include "lessonslist-tpl"}}
                 </ul>
             </div>
         </div>
+    </script>
+    <script type="text/template" id="lessonslist-tpl">
+        {{each lessons as item index}}
+        <li>
+            <i class="fa fa-file-video-o"></i>
+            <span class="order">课时：{{index+1}}</span>
+            <span class="name">{{item.ct_name}}</span>
+            <span class="duration">{{item.ct_video_duration}}</span>
+            <!-- 操作 -->
+            <div class="action pull-right">
+                <button class="btn btn-info btn-xs" id="editor" data-id={{item.ct_id}}>编辑</button>
+                <a href="javascript:;" class="btn btn-info btn-xs">预览</a>
+                <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
+            </div>
+        </li>
+        {{/each}}
     </script>
     <?php include "/views/public/js.html" ?>
     <script>
